@@ -8,4 +8,3 @@ backend for the shareoh app
 
 # changelog
 - Configured Nodemon.
-- Add github workflow
