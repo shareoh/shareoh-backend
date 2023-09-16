@@ -7,4 +7,4 @@ backend for the shareoh app
 - npm start
 
 # changelog
-- Configured Nodemon
+- Configured Nodemon.
