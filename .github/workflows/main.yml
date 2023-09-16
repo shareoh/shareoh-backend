@@ -30,6 +30,7 @@ jobs:
     - uses: 8398a7/action-slack@v3
       with:
         status: custom
+        fields: repo,commit,event,action,workflow,ref,URL
         custom_payload: |
          {
            "attachments": [
