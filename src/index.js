@@ -18,5 +18,5 @@ mongoose
   });
 
 // Test route to check connection.
-const testController = require("./src/controllers/test.js");
+const testController = require("./controllers/test.js");
 app.use("/test", testController);

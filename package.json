@@ -2,9 +2,10 @@
   "name": "shareoh-backend",
   "version": "1.0.0",
   "description": "backend for the shareoh app",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon"
   },
   "keywords": [],
   "author": "",
@@ -12,5 +13,14 @@
   "dependencies": {
     "express": "^4.18.2",
     "mongoose": "^7.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "nodemon" : {
+    "watch": ["src"],
+    "ext": "js",
+    "ignore": ["src/tests"],
+    "exec": "node src/index.js"
   }
 }
