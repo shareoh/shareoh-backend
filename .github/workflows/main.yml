@@ -31,32 +31,22 @@ jobs:
       with:
         status: custom
         custom_payload: |
-          {
-            text: "Custom Field Check",
-            attachments: [{
-              "author_name": "8398a7@action-slack", // json
-              fallback: 'fallback',
-              color: 'good',
-              title: 'CI Result',
-              text: 'Succeeded',
-              fields: [{
-                title: 'lower case',
-                value: 'LOWER CASE CHECK'.toLowerCase(),
-                short: true
-              },
-              {
-                title: 'reverse',
-                value: 'gnirts esrever'.split('').reverse().join(''),
-                short: true
-              },
-              {
-                title: 'long title1',
-                value: 'long value1',
-                short: false
-              }],
-              actions: [{
-              }]
-            }]
-          }        
+         {
+           "attachments": [
+             {
+               "color": "${{ job.status }}",
+               "title": >-
+                 ${{ github.actor }} ${{ github.event.pull_request && github.event.pull_request.merged == true && 'merged a pull request' || github.event.pull_request && 'opened a pull request' || github.event_name == 'push' && 'pushed new changes' || github.event_name == 'create' && 'created a new branch or tag' || github.event_name == 'delete' && 'deleted a branch or tag' || github.event_name == 'issues' && github.event.action || 'triggered an event' }},
+               "text": >-
+                 :tada: Event details:
+                
+                 - Repository: ${{ github.repository }}
+                 - Branch: ${{ github.ref }}
+                 - Message: ${{ github.event_name == 'push' && github.event.head_commit.message || github.event_name == 'issues' && github.event.issue.title || github.event_name == 'pull_request' && github.event.pull_request.title || '' }}
+                 - :globe_with_meridians: Link: ${{ github.event.pull_request.html_url || github.event.issue.html_url || github.event.repository.html_url }}
+             }
+            
+           ]
+         }        
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
