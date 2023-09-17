@@ -11,16 +11,21 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.18.2",
     "mongoose": "^7.3.2"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
   },
-  "nodemon" : {
-    "watch": ["src"],
+  "nodemon": {
+    "watch": [
+      "src"
+    ],
     "ext": "js",
-    "ignore": ["src/tests"],
+    "ignore": [
+      "src/tests"
+    ],
     "exec": "node src/index.js"
   }
 }
